@@ -1,22 +1,20 @@
 <template>
-  <div v-if=!linkedin>
-    <a v-on:click.prevent=onLinkedin>LinkedIn</a>
+  <div v-if=!IN>
+    <a href=# v-on:click.prevent=login>LinkedIn</a>
   </div>
 </template>
 <script>
   module.exports = {
     vuex: {
       getters: {
-        linkedin: function (state) {
-          return state.linkedin
+        IN: function (state) {
+          return state.IN
         }
-      },
-      actions: {
-        onLinkedin: function (store) {
-          IN.User.authorize(function () {
-            store.dispatch('onLinkedin', true)
-          });
-        }
+      }
+    },
+    methods: {
+      login: function () {
+        IN.User.authorize()
       }
     }
   }

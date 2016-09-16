@@ -1,14 +1,14 @@
 var state = {
-  linkedin: false,
-  salesforce: false
+  IN: null,
+  conn: null
 }
 
 var mutations = {
-  onLinkedin: function (state, status) {
-    state.linkedin = status
+  auth: function (state, IN) {
+    state.IN = IN
   },
-  onSalesforce: function (state, status) {
-    state.salesforce = status
+  connect: function (state, conn) {
+    state.conn = conn
   }
 }
 

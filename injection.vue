@@ -1,8 +1,7 @@
 <template>
   <div>
-    <label>Profil linkedIn :</label>
     <input type=text v-model=url v-bind:disabled=!connected>
-    <button v-if=injectable v-on:click=injection>Injection</button>
+    <a href=# v-if=injectable v-on:click.prevent=inject>Injecter</a>
   </div>
 </template>
 <script>
@@ -14,7 +13,7 @@
     },
     computed: {
       connected: function () {
-        return this.linkedin || this.salesforce
+        return this.IN && this.conn
       },
       injectable: function () {
         return this.connected && this.url
@@ -22,19 +21,41 @@
     },
     vuex: {
       getters: {
-        linkedin: function (state) {
-          return state.linkedin
+        IN: function (state) {
+          return state.IN
         },
-        salesforce: function (state) {
-          return state.salesforce
+        conn: function (state) {
+          return state.conn
         }
       }
     },
     methods: {
-      injection: function (e) {
-        IN.API.Raw("/people/url=" + encodeURIComponent(this.url) + ":(id,first-name,email-address,last-name,headline,picture-url,industry,summary,specialties,positions:(id,title,summary,start-date,end-date,is-current,company:(id,name,type,size,industry,ticker)),educations:(id,school-name,field-of-study,start-date,end-date,degree,activities,notes),associations,interests,num-recommenders,date-of-birth,publications:(id,title,publisher:(name),authors:(id,name),date,url,summary),patents:(id,title,summary,number,status:(id,name),office:(name),inventors:(id,name),date,url),languages:(id,language:(name),proficiency:(level,name)),skills:(id,skill:(name)),certifications:(id,name,authority:(name),number,start-date,end-date),courses:(id,name,number),recommendations-received:(id,recommendation-type,recommendation-text,recommender),honors-awards,three-current-positions,three-past-positions,volunteer)?format=json").result(function (data) {
-          console.log(data);
-        })
+      inject: function (e) {
+        this.IN.API
+          .Profile('url=' + this.url)
+          .fields([
+            'firstName',
+            'lastName',
+            'headline',
+            'positions:(company,title,summary,startDate,endDate,isCurrent)',
+            'industry',
+            'location:(name,country:(code))',
+            'pictureUrl',
+            'publicProfileUrl',
+            'emailAddress',
+            'educations',
+            'dateOfBirth'
+          ])
+          .result(function (data) {
+            console.log(data);
+          })
+
+          console.log(this.conn.userInfo)
+
+          // this.conn.query('SELECT Id, Name FROM Account', function (err, res) {
+          //   if (err) return
+          //   console.log(res)
+          // })
       }
     }
   }

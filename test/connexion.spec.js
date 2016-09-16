@@ -15,7 +15,7 @@ describe('connexion.vue', function () {
       }
     }).$mount()
 
-    var nl = vm.$el.querySelectorAll('p')
-    expect(nl.length).toBe(3)
+    var nl = vm.$el.querySelectorAll('a')
+    expect(nl.length).toBe(1)
   })
 })

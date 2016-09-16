@@ -5,14 +5,21 @@ var store = require('./store')
 
 Vue.use(Vuex)
 
-new Vue({
+var st = new Vuex.Store(store)
+
+var vm = new Vue({
   el: '#app',
-  store: new Vuex.Store(store),
+  store: st,
   render: function (h) {
     return h(App)
   }
 })
 
+IN.Event.on(IN, "auth", function () {
+  st.dispatch('auth', IN)
+});
+
 jsforce.browser.on('connect', function (conn) {
   console.log(conn)
+  st.dispatch('connect', conn)
 })

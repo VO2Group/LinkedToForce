@@ -15,7 +15,7 @@ describe('linkedin.vue', function () {
       }
     }).$mount()
 
-    var nl = vm.$el.querySelectorAll('button')
+    var nl = vm.$el.querySelectorAll('a')
     expect(nl.length).toBe(1)
   })
 })

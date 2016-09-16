@@ -1,28 +1,35 @@
 <template>
-  <div>
-    <button v-if=connected v-on:click=logout>Déconnexion</button>
+  <div v-if=connected>
+    <a href=# v-on:click.prevent=logout>Déconnexion</a>
   </div>
 </template>
 <script>
   module.exports = {
     computed: {
       connected: function () {
-        return this.linkedin || this.salesforce
+        return this.IN || this.conn
       }
     },
     vuex: {
       getters: {
-        linkedin: function (state) {
-          return state.linkedin
+        IN: function (state) {
+          return state.IN
         },
-        salesforce: function (state) {
-          return state.salesforce
+        conn: function (state) {
+          return state.conn
         },
       },
       actions: {
         logout: function (store) {
-          store.dispatch('onLinkedin', false)
-          store.dispatch('onSalesforce', false)
+          if (this.IN) {
+            this.IN.User.logout()
+            store.dispatch('auth', null)
+          }
+
+          if (this.conn) {
+            jsforce.browser.logout()
+            store.dispatch('connect', null)
+          }
         }
       }
     }
