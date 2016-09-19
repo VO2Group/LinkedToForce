@@ -32,30 +32,10 @@
     methods: {
       inject: function (e) {
         this.IN.API
-          .Profile('url=' + this.url)
-          .fields([
-            'firstName',
-            'lastName',
-            'headline',
-            'positions:(company,title,summary,startDate,endDate,isCurrent)',
-            'industry',
-            'location:(name,country:(code))',
-            'pictureUrl',
-            'publicProfileUrl',
-            'emailAddress',
-            'educations',
-            'dateOfBirth'
-          ])
+          .Raw('/people/url=' + encodeURIComponent(this.url))
           .result(function (data) {
-            console.log(data);
+            console.log(data)
           })
-
-          console.log(this.conn.userInfo)
-
-          // this.conn.query('SELECT Id, Name FROM Account', function (err, res) {
-          //   if (err) return
-          //   console.log(res)
-          // })
       }
     }
   }

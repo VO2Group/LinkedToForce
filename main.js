@@ -15,11 +15,10 @@ var vm = new Vue({
   }
 })
 
-IN.Event.on(IN, "auth", function () {
+IN.Event.on(IN, 'auth', function () {
   st.dispatch('auth', IN)
 });
 
 jsforce.browser.on('connect', function (conn) {
-  console.log(conn)
   st.dispatch('connect', conn)
 })

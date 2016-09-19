@@ -1,7 +1,6 @@
 var Vue = require('vue')
 var Vuex = require('vuex')
 var Linkedin = require('../linkedin.vue')
-var store = require('../store')
 
 Vue.use(Vuex)
 
@@ -9,7 +8,11 @@ describe('linkedin.vue', function () {
   it('should render correct', function () {
     var vm = new Vue({
       template: '<div></div>',
-      store: new Vuex.Store(store),
+      store: new Vuex.Store({
+        state: {
+          IN: null
+        }
+      }),
       render: function (h) {
         return h(Linkedin)
       }

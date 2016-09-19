@@ -7,7 +7,7 @@ module.exports = function (karma) {
       'test/**/*.spec.js': ['browserify']
     },
     browserify: {
-      transform: ['vueify' ]
+      transform: ['vueify']
     },
     reporters: ['progress', 'junit'],
     singleRun: true
