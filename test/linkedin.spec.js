@@ -1,6 +1,6 @@
 var Vue = require('vue')
 var Vuex = require('vuex')
-var Linkedin = require('../linkedin.vue')
+var Linkedin = require('../components/linkedin.vue')
 
 Vue.use(Vuex)
 

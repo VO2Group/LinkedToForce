@@ -1,7 +1,7 @@
 var Vue = require('vue')
 var Vuex = require('Vuex')
-var App = require('./app.vue')
-var store = require('./store')
+var App = require('./components/app.vue')
+var store = require('./vuex/store')
 
 Vue.use(Vuex)
 

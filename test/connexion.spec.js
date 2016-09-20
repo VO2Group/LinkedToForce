@@ -1,6 +1,6 @@
 var Vue = require('vue')
 var Vuex = require('vuex')
-var Connexion = require('../connexion.vue')
+var Connexion = require('../components/connexion.vue')
 
 Vue.use(Vuex)
 
