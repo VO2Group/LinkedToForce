@@ -1,5 +1,6 @@
 <template>
-  <div v-if=connected>
+  <div class=connection v-if=connected>
+    <img v-if=me v-bind:src=me.pictureUrl>
     <a href=# v-on:click.prevent=logout>Déconnexion</a>
   </div>
 </template>
@@ -15,6 +16,9 @@
         IN: function (state) {
           return state.IN
         },
+        me: function (state) {
+          return state.me
+        },
         conn: function (state) {
           return state.conn
         },
@@ -23,12 +27,12 @@
         logout: function (store) {
           if (this.IN) {
             this.IN.User.logout()
-            store.dispatch('auth', null)
+            store.dispatch('setIN', null)
           }
 
           if (this.conn) {
             jsforce.browser.logout()
-            store.dispatch('connect', null)
+            store.dispatch('setConn', null)
           }
         }
       }

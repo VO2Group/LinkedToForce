@@ -1,4 +1,5 @@
 /node_modules
+npm-debug.log
 build.js
 build.min.js
 TESTS-*.xml

@@ -1,14 +1,6 @@
-<style>
-  html {
-    background: url(assets/cvvo2.png) no-repeat center center fixed;
-    background-size: cover;
-  }
-  body {
-    font-family: 'Teko', sans-serif;
-  }
-</style>
 <template>
-  <div>
+  <div class=app>
+    <span>CVVO2</span>
     <linkedin></linkedin>
     <salesforce></salesforce>
     <connexion></connexion>
@@ -30,3 +22,8 @@
     }
   }
 </script>
+<style>
+  body {
+    font-family: 'Teko', sans-serif;
+  }
+</style>

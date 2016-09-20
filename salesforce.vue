@@ -1,5 +1,5 @@
 <template>
-  <div v-if=!conn>
+  <div class=salesforce v-if=!conn>
     <a href=# v-on:click.prevent=login>SalesForce</a>
   </div>
 </template>
@@ -14,9 +14,7 @@
     },
     methods: {
       login: function () {
-        jsforce.browser.login({
-          accessToken: '{!$Api.Session_Id}'
-        })
+        jsforce.browser.login()
       }
     }
   }

@@ -1,13 +1,17 @@
 var state = {
   IN: null,
+  me: null,
   conn: null
 }
 
 var mutations = {
-  auth: function (state, IN) {
+  setIN: function (state, IN) {
     state.IN = IN
   },
-  connect: function (state, conn) {
+  setMe: function (state, me) {
+    state.me = me
+  },
+  setConn: function (state, conn) {
     state.conn = conn
   }
 }

@@ -4,27 +4,23 @@
     <meta charset=utf-8>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CVVO2</title>
-
     <link rel=stylesheet href="https://fonts.googleapis.com/css?family=Teko:400,300">
-
     <link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css>
   </head>
   <body>
     <div id=app></div>
-
     <script type=text/javascript src=https://platform.linkedin.com/in.js>
       api_key: 786zr9tvlp9bwh
       authorize: true
     </script>
-
     <script src=https://cdnjs.cloudflare.com/ajax/libs/jsforce/1.7.0/jsforce.min.js></script>
     <script>
       jsforce.browser.init({
         clientId: '3MVG98_Psg5cppyZckKdoYkY6MH4eEM.NhuDlIY0Pckhhph_2odWblFX4dA3oCXiisoFRTPCIY5aaXs0Xa4LV',
-        redirectUri: 'http://localhost:3000'
+        redirectUri: 'http://localhost:3000',
+        proxyUrl: 'http://localhost:3002/proxy.php'
       })
     </script>
-
     <script src=build.js></script>
   </body>
 </html>
