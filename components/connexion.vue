@@ -1,7 +1,8 @@
 <template>
   <div class=connection v-if=connected>
-    <img v-if=me v-bind:src=me.pictureUrl>
     <a href=# v-on:click.prevent=logout>Déconnexion</a>
+    <img v-if=me v-bind:src=me.pictureUrl>
+    <pre v-if=me>{{ me }}</pre>
   </div>
 </template>
 <script>

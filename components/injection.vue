@@ -1,9 +1,9 @@
 <template>
   <div class=injection>
-    <input type=text v-model=url v-bind:disabled=!connected>
+    <input type=text placeholder="LinkedIn profile url" v-model=url v-bind:disabled=!connected>
     <a href=# v-if=injectable v-on:click.prevent=inject>Injecter</a>
     <img v-if=result v-bind:src=result.pictureUrl>
-    <pre v-if=result>{{ result | json 4 }}</pre>
+    <pre v-if=result>{{ result }}</pre>
   </div>
 </template>
 <script>
@@ -50,8 +50,3 @@
     }
   }
 </script>
-<style>
-  .injection {
-    color: white;
-  }
-</style>
