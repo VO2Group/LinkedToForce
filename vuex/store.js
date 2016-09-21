@@ -1,7 +1,8 @@
 var state = {
   IN: null,
   me: null,
-  conn: null
+  conn: null,
+  res: null
 }
 
 var mutations = {
@@ -13,6 +14,9 @@ var mutations = {
   },
   setConn: function (state, conn) {
     state.conn = conn
+  },
+  setRes: function (state, res) {
+    state.res = res
   }
 }
 

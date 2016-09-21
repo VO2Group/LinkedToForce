@@ -19,12 +19,11 @@
     "watchify": "^3.7.0"
   },
   "scripts": {
-    "start": "npm run watch & npm run proxy & npm run serve",
+    "start": "npm run watch & npm run serve",
     "test": "karma start karma.conf.js",
     "build": "browserify -t vueify -o cvvo2.js main.js",
     "minify": "uglifyjs -o cvvo2.min.js cvvo2.js",
     "watch": "watchify -t vueify -o cvvo2.js main.js",
-    "proxy": "php -S localhost:3002 -t proxy",
     "serve": "browser-sync start -s -f 'index.html,cvvo2.js'"
   }
 }

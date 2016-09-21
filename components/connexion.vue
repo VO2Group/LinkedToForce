@@ -3,6 +3,8 @@
     <a href=# v-on:click.prevent=logout>Déconnexion</a>
     <img v-if=me v-bind:src=me.pictureUrl>
     <pre v-if=me>{{ me }}</pre>
+    <img v-if=res v-bind:src=res.photo.smallPhotoUrl>
+    <pre v-if=res>{{ res }}</pre>
   </div>
 </template>
 <script>
@@ -23,6 +25,9 @@
         conn: function (state) {
           return state.conn
         },
+        res: function (state) {
+          return state.res
+        }
       },
       actions: {
         logout: function (store) {

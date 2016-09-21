@@ -26,4 +26,9 @@ IN.Event.on(IN, 'auth', function () {
 
 jsforce.browser.on('connect', function (conn) {
   st.dispatch('setConn', conn)
+  conn.chatter.resource('/users/me').retrieve(function (err, res) {
+    if (err)
+      throw err
+    st.dispatch('setRes', res)
+  })
 })
