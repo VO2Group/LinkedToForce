@@ -4,6 +4,7 @@
     <a href=# v-if=injectable v-on:click.prevent=inject>Injecter</a>
     <img v-if=result v-bind:src=result.pictureUrl>
     <pre v-if=result>{{ result }}</pre>
+    <pre v-if=contact>{{ contact }}</pre>
   </div>
 </template>
 <script>
@@ -11,7 +12,8 @@
     data: function () {
       return {
         url: '',
-        result: null
+        result: null,
+        contact: null
       }
     },
     computed: {
@@ -41,10 +43,10 @@
             that.result = data
           })
 
-        that.conn.query('SELECT Id, Name FROM Contact', function (err, res) {
+        that.conn.query("SELECT Id, Name, Email FROM Contact WHERE Name = 'David TONNAIRE'", function (err, res) {
           if (err)
             throw err
-          console.log(res)
+          that.contact = res.records[0]
         })
       }
     }
