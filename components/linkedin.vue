@@ -1,14 +1,25 @@
 <template>
-  <div class=linkedin v-if=!IN>
-    <a href=# v-on:click.prevent=login>LinkedIn</a>
+  <div class=linkedin>
+    <span v-if=!connected>Vous devez vous connecter à LinkedIn avant de pouvoir créer des contacts:</span>
+    <button v-if=!connected v-on:click=login>Connectez vous à LinkedIn</button>
+    <img class=avatar v-if=connected v-bind:src=me.pictureUrl>
+    <span v-if=connected><b>{{me.firstName}}</b> vous êtes connecté à LinkedIn</span>
   </div>
 </template>
 <script>
   module.exports = {
+    computed: {
+      connected: function () {
+        return this.IN && this.me
+      }
+    },
     vuex: {
       getters: {
         IN: function (state) {
           return state.IN
+        },
+        me: function (state) {
+          return state.me
         }
       },
       actions: {
@@ -25,3 +36,9 @@
     }
   }
 </script>
+<style>
+  .linkedin {
+    display: flex;
+    flex-direction: column;
+  }
+</style>

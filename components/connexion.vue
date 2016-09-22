@@ -1,10 +1,7 @@
 <template>
-  <div class=connection v-if=connected>
-    <a href=# v-on:click.prevent=logout>Déconnexion</a>
-    <img v-if=me v-bind:src=me.pictureUrl>
-    <pre v-if=me>{{ me }}</pre>
-    <img v-if=res v-bind:src=res.photo.smallPhotoUrl>
-    <pre v-if=res>{{ res }}</pre>
+  <div class=connection>
+    <button v-if=connected v-on:click=logout>Déconnectez vous</button>
+    <span v-if=connected>Vous serez déconnecté de LinkedIn et/ou Salesforce</span>
   </div>
 </template>
 <script>
@@ -19,14 +16,8 @@
         IN: function (state) {
           return state.IN
         },
-        me: function (state) {
-          return state.me
-        },
         conn: function (state) {
           return state.conn
-        },
-        res: function (state) {
-          return state.res
         }
       },
       actions: {
@@ -45,3 +36,9 @@
     }
   }
 </script>
+<style>
+  .connection {
+    display: flex;
+    flex-direction: column;
+  }
+</style>

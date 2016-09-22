@@ -26,4 +26,9 @@
   body {
     font-family: 'Teko', sans-serif;
   }
+  .avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50px;
+  }
 </style>
