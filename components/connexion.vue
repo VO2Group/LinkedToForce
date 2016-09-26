@@ -1,7 +1,13 @@
 <template>
   <div class=connection>
-    <button v-if=connected v-on:click=logout>Déconnectez vous</button>
-    <p v-if=connected>Vous serez déconnecté de LinkedIn et/ou Salesforce</p>
+    <h2>Etat</h2>
+    <div v-if=connected>
+      <button v-on:click=logout>Déconnectez vous</button>
+      <span>Vous serez déconnecté de LinkedIn et/ou Salesforce</span>
+    </div>
+    <div v-else>
+      <span>Vous êtes déconnecté</span>
+    </div>
   </div>
 </template>
 <script>

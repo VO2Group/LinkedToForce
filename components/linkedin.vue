@@ -1,10 +1,15 @@
 <template>
   <div class=linkedin>
-    <p v-if=!connected>Vous devez vous connecter à LinkedIn avant de pouvoir créer des contacts:</p>
-    <button v-if=!connected v-on:click=login>Connectez vous à LinkedIn</button>
-    <img v-if=connected v-bind:src=me.pictureUrl>
-    <p v-if=connected><b>{{me.firstName}}</b></p>
-    <p v-if=connected>Vous êtes connecté à LinkedIn</p>
+    <h2>LinkedIn</h2>
+    <div v-if=connected>
+      <img class=avatar v-bind:src=me.pictureUrl>
+      <p><b>{{me.firstName}}</b></p>
+      <p>Vous êtes connecté à LinkedIn</p>
+    </div>
+    <div v-else>
+      <span>Vous devez vous connecter à LinkedIn avant de pouvoir créer des contacts:</span>
+      <button v-on:click=login>Connectez vous à LinkedIn</button>
+    </div>
   </div>
 </template>
 <script>
