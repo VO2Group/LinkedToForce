@@ -21,9 +21,9 @@
   "scripts": {
     "start": "npm run watch & npm run serve",
     "test": "karma start karma.conf.js",
-    "build": "browserify -t vueify -o cvvo2.js main.js",
-    "minify": "uglifyjs -o cvvo2.min.js cvvo2.js",
-    "watch": "watchify -t vueify -o cvvo2.js main.js",
-    "serve": "browser-sync start -s -f 'index.html,cvvo2.js'"
+    "build": "browserify -t vueify -o linkedtoforce.js main.js",
+    "minify": "uglifyjs -o linkedtoforce.min.js linkedtoforce.js",
+    "watch": "watchify -t vueify -o linkedtoforce.js main.js",
+    "serve": "browser-sync start -s -f 'index.html,linkedtoforce.js'"
   }
 }

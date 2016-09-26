@@ -1,6 +1,6 @@
 <template>
   <div class=app>
-    <h1>CVVO2</h1>
+    <h1>LinkedToForce</h1>
     <linkedin></linkedin>
     <salesforce></salesforce>
     <connexion></connexion>
