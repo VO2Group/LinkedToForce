@@ -1,9 +1,10 @@
 <template>
   <div class=linkedin>
-    <span v-if=!connected>Vous devez vous connecter à LinkedIn avant de pouvoir créer des contacts:</span>
+    <p v-if=!connected>Vous devez vous connecter à LinkedIn avant de pouvoir créer des contacts:</p>
     <button v-if=!connected v-on:click=login>Connectez vous à LinkedIn</button>
-    <img class=avatar v-if=connected v-bind:src=me.pictureUrl>
-    <span v-if=connected><b>{{me.firstName}}</b> vous êtes connecté à LinkedIn</span>
+    <img v-if=connected v-bind:src=me.pictureUrl>
+    <p v-if=connected><b>{{me.firstName}}</b></p>
+    <p v-if=connected>Vous êtes connecté à LinkedIn</p>
   </div>
 </template>
 <script>
@@ -36,9 +37,3 @@
     }
   }
 </script>
-<style>
-  .linkedin {
-    display: flex;
-    flex-direction: column;
-  }
-</style>

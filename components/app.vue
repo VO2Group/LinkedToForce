@@ -1,6 +1,6 @@
 <template>
   <div class=app>
-    <span>CVVO2</span>
+    <h1>CVVO2</h1>
     <linkedin></linkedin>
     <salesforce></salesforce>
     <connexion></connexion>
@@ -22,13 +22,3 @@
     }
   }
 </script>
-<style>
-  body {
-    font-family: 'Teko', sans-serif;
-  }
-  .avatar {
-    width: 45px;
-    height: 45px;
-    border-radius: 50px;
-  }
-</style>

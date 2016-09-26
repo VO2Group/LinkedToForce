@@ -19,7 +19,7 @@ var vm = new Vue({
 
 describe('connexion.vue', function () {
   it('should render correctly', function () {
-    var nl = vm.$el.querySelectorAll('a')
+    var nl = vm.$el.querySelectorAll('button')
     expect(nl.length).toBe(1)
   })
 })
