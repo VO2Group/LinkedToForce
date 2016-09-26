@@ -9,7 +9,7 @@ var vm = new Vue({
   store: new Vuex.Store({
     state: {
       IN: {},
-      conn: {}
+      SF: {}
     }
   }),
   render: function (h) {

@@ -2,12 +2,12 @@
   <div class=salesforce>
     <h2>Salesforce</h2>
     <div v-if=connected>
-      <img class=avatar v-bind:src=res.photo.smallPhotoUrl>
-      <p><b>{{res.firstName}}</b></p>
+      <img class=avatar v-bind:src=meSF.photo.smallPhotoUrl>
+      <p><b>{{name}}</b></p>
       <p>Vous êtes connecté à Saleforce</p>
     </div>
     <div v-else>
-      <span>Bien évidement vous devez aussi vous connecter à Salesforce:</span>
+      <label>Bien évidement vous devez aussi vous connecter à Salesforce</label>
       <button v-on:click=login>Connectez vous à Salesforce</button>
     </div>
   </div>
@@ -15,17 +15,20 @@
 <script>
   module.exports = {
     computed: {
+      name: function () {
+        return this.meSF.firstName + ' ' + this.meSF.lastName
+      },
       connected: function () {
-        return this.conn && this.res
+        return this.SF && this.meSF
       }
     },
     vuex: {
       getters: {
-        conn: function (state) {
-          return state.conn
+        SF: function (state) {
+          return state.SF
         },
-        res: function (state) {
-          return state.res
+        meSF: function (state) {
+          return state.meSF
         }
       }
     },

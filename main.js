@@ -1,7 +1,7 @@
 var Vue = require('vue')
 var Vuex = require('Vuex')
-var App = require('./components/app.vue')
 var store = require('./vuex/store')
+var App = require('./components/app.vue')
 
 Vue.use(Vuex)
 
@@ -20,15 +20,15 @@ IN.Event.on(IN, 'auth', function () {
   IN.API
     .Raw('/people/~:(id,first-name,last-name,positions,interests,publications,patents,languages,skills,date-of-birth,email-address,phone-numbers,im-accounts,main-address,twitter-accounts,headline,picture-url,public-profile-url)')
     .result(function (data) {
-      st.dispatch('setMe', data)
+      st.dispatch('setMeIN', data)
     })
-});
+})
 
-jsforce.browser.on('connect', function (conn) {
-  st.dispatch('setConn', conn)
-  conn.chatter.resource('/users/me').retrieve(function (err, res) {
+jsforce.browser.on('connect', function (SF) {
+  st.dispatch('setSF', SF)
+  SF.chatter.resource('/users/me').retrieve(function (err, res) {
     if (err)
       throw err
-    st.dispatch('setRes', res)
+    st.dispatch('setMeSF', res)
   })
 })

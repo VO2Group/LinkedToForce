@@ -2,8 +2,8 @@
   <div class=connection>
     <h2>Etat</h2>
     <div v-if=connected>
+      <label>Vous serez déconnecté de LinkedIn et/ou Salesforce</label>
       <button v-on:click=logout>Déconnectez vous</button>
-      <span>Vous serez déconnecté de LinkedIn et/ou Salesforce</span>
     </div>
     <div v-else>
       <span>Vous êtes déconnecté</span>
@@ -14,7 +14,7 @@
   module.exports = {
     computed: {
       connected: function () {
-        return this.IN || this.conn
+        return this.IN || this.SF
       }
     },
     vuex: {
@@ -22,8 +22,8 @@
         IN: function (state) {
           return state.IN
         },
-        conn: function (state) {
-          return state.conn
+        SF: function (state) {
+          return state.SF
         }
       },
       actions: {
@@ -34,7 +34,7 @@
           }
           if (this.conn) {
             jsforce.browser.logout()
-            store.dispatch('setConn', null)
+            store.dispatch('setSF', null)
           }
         }
       }

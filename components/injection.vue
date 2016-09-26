@@ -5,10 +5,10 @@
       <input type=text placeholder="Tapez l'URL LinkedIn d'un profile" v-model=url v-on:change=change>
       <button v-on:click=select v-bind:disabled=!url>Récupérer le profil</button>
       <div v-if=result>
-        <h2>{{result.firstName}} {{correct(result.lastName)}}</h2>
+        <h2>{{name}}</h2>
         <h3>{{result.headline}}</h3>
         <img class=avatar v-bind:src=result.pictureUrl>
-        <p>Vous allez {{contact ? 'mettre à jour' : 'créer'}} le contact {{result.firstName}} {{correct(result.lastName)}} dans Salesforce avec les informations suivantes:</p>
+        <p>Vous allez {{contact ? 'mettre à jour' : 'créer'}} le contact {{name}} dans Salesforce avec les informations suivantes:</p>
         <pre>{{result}}</pre>
         <div v-if=contact>
           <button v-on:click=update>Mettre à jour</button>
@@ -33,8 +33,11 @@
       }
     },
     computed: {
+      name: function () {
+        return this.result.firstName + ' ' + this.result.lastName
+      },
       connected: function () {
-        return this.IN && this.conn
+        return this.IN && this.SF
       }
     },
     vuex: {
@@ -42,21 +45,12 @@
         IN: function (state) {
           return state.IN
         },
-        conn: function (state) {
-          return state.conn
+        SF: function (state) {
+          return state.SF
         }
       }
     },
     methods: {
-      correct: function (s) {
-        return s
-          .toUpperCase()
-          .replace(/[ÁÀÄÂ]/, 'A')
-          .replace(/[ÉÈËÊ]/, 'E')
-          .replace(/[ÍÌÏÎ]/, 'I')
-          .replace(/[ÓÒÖÔ]/, 'O')
-          .replace(/[ÚÙÜÛ]/, 'U')
-      },
       reset: function () {
         this.url = ''
         this.change()
@@ -70,7 +64,7 @@
           .Raw('/people/url=' + encodeURIComponent(this.url) + ':(id,first-name,last-name,positions,interests,publications,patents,languages,skills,date-of-birth,email-address,phone-numbers,im-accounts,main-address,twitter-accounts,headline,picture-url,public-profile-url)')
           .result(function (data) {
             this.result = data
-            this.conn.query("SELECT Id, Name, Email FROM Contact WHERE Name = '" + this.result.firstName + ' ' + this.correct(this.result.lastName) + "'", function (err, res) {
+            this.SF.query("SELECT Id, Name, Email FROM Contact WHERE Name = '" + this.name + "'", function (err, res) {
               if (err)
                 throw err
               this.contact = res.records[0]
@@ -79,10 +73,10 @@
       },
       create: function () {
         if (confirm('Etes vous sur ?')) {
-          this.conn
+          this.SF
             .sobject("Contact")
             .create({
-              Name: this.result.firstName + ' ' + this.correct(this.result.lastName)
+              Name: this.name
             },
             function(err, ret) {
               if (err)
@@ -91,13 +85,13 @@
           this.reset()
         }
       },
-      update: function (e) {
+      update: function () {
         if (confirm('Etes vous sur ?')) {
-          this.conn
+          this.SF
             .sobject("Contact")
             .update({
               Id: this.contact.Id,
-              Name: this.result.firstName + ' ' + this.correct(this.result.lastName)
+              Name: this.name
             },
             function(err, ret) {
               if (err)

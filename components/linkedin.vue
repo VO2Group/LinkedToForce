@@ -2,12 +2,12 @@
   <div class=linkedin>
     <h2>LinkedIn</h2>
     <div v-if=connected>
-      <img class=avatar v-bind:src=me.pictureUrl>
-      <p><b>{{me.firstName}}</b></p>
+      <img class=avatar v-bind:src=meIN.pictureUrl>
+      <p><b>{{name}}</b></p>
       <p>Vous êtes connecté à LinkedIn</p>
     </div>
     <div v-else>
-      <span>Vous devez vous connecter à LinkedIn avant de pouvoir créer des contacts:</span>
+      <label>Vous devez vous connecter à LinkedIn avant de pouvoir créer des contacts</label>
       <button v-on:click=login>Connectez vous à LinkedIn</button>
     </div>
   </div>
@@ -15,8 +15,11 @@
 <script>
   module.exports = {
     computed: {
+      name: function () {
+        return this.meIN.firstName + ' ' + this.meIN.lastName
+      },
       connected: function () {
-        return this.IN && this.me
+        return this.IN && this.meIN
       }
     },
     vuex: {
@@ -24,8 +27,8 @@
         IN: function (state) {
           return state.IN
         },
-        me: function (state) {
-          return state.me
+        meIN: function (state) {
+          return state.meIN
         }
       },
       actions: {
