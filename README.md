@@ -4,7 +4,7 @@ This [Vue.js][1] application creates Salesforce contacts from LinkedIn profiles.
 
 ## Use npm as build tool
 
-Take a look to npm scripts defined in [package.json][4] file :
+Take a look to [npm scripts][4] defined in [package.json][5] file :
 
 ```json
 {
@@ -22,4 +22,5 @@ Take a look to npm scripts defined in [package.json][4] file :
 [1]: https://vuejs.org/ "Vue.js"
 [2]: https://jsforce.github.io "JSForce"
 [3]: https://developer.linkedin.com/docs/getting-started-js-sdk "LinkedIn"
-[4]: package.json
+[4]: https://docs.npmjs.com/misc/scripts "npm scripts"
+[5]: package.json
