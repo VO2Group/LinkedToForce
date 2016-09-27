@@ -32,7 +32,7 @@
             this.IN.User.logout()
             store.dispatch('setIN', null)
           }
-          if (this.conn) {
+          if (this.SF) {
             jsforce.browser.logout()
             store.dispatch('setSF', null)
           }
