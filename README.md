@@ -15,7 +15,7 @@ Take a look to [npm scripts][4] defined in [package.json][5] file :
     "minify": "uglifyjs -o linkedtoforce.min.js linkedtoforce.js",
     "watch": "watchify -t vueify -o linkedtoforce.js main.js",
     "serve": "browser-sync start -s -f 'index.html,linkedtoforce.js'"
-  }  
+  }
 }
 ```
 
