@@ -53,7 +53,6 @@
     methods: {
       reset: function () {
         this.url = ''
-        this.change()
       },
       change: function () {
         this.result = null
