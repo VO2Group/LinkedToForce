@@ -8,12 +8,14 @@
         <h2>{{name}}</h2>
         <h3>{{result.headline}}</h3>
         <img class=avatar v-bind:src=result.pictureUrl>
-        <p>Vous allez {{contact ? 'mettre à jour' : 'créer'}} le contact {{name}} dans Salesforce avec les informations suivantes:</p>
-        <pre>{{result}}</pre>
         <div v-if=contact>
+          <p>Vous allez mettre à jour le contact {{name}} dans Salesforce avec les informations suivantes:</p>
+          <pre>{{result}}</pre>
           <button v-on:click=update>Mettre à jour</button>
         </div>
         <div v-else>
+          <p>Vous allez créer le contact {{name}} dans Salesforce avec les informations suivantes:</p>
+          <pre>{{result}}</pre>
           <button v-on:click=create>Créer</button>
         </div>
       </div>
