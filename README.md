@@ -20,7 +20,7 @@ Take a look to [npm scripts][4] defined in [package.json][5] file :
 ```
 
 [1]: https://vuejs.org/ "Vue.js"
-[2]: https://jsforce.github.io "JSForce"
-[3]: https://developer.linkedin.com/docs/getting-started-js-sdk "LinkedIn"
+[2]: https://developer.linkedin.com/docs/getting-started-js-sdk "LinkedIn"
+[3]: https://jsforce.github.io "JSForce"
 [4]: https://docs.npmjs.com/misc/scripts "npm scripts"
 [5]: package.json
