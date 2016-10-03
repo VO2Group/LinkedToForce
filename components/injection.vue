@@ -3,18 +3,18 @@
     <div v-if=connected>
       <input type=text placeholder="Tapez l'URL d'un profil LinkedIn" v-model=url v-on:change=change>
       <button class=button v-on:click=select v-bind:disabled=!url>Récupérer le profil</button>
-      <div v-if=result>
+      <div v-if=profil>
         <h2>{{name}}</h2>
-        <h3>{{result.headline}}</h3>
-        <img class=avatar v-bind:src=result.pictureUrl>
+        <h3>{{profil.headline}}</h3>
+        <img class=avatar v-bind:src=profil.pictureUrl>
         <div v-if=contact>
           <p>Vous allez mettre à jour le contact {{name}} dans Salesforce avec les informations suivantes:</p>
-          <pre>{{result}}</pre>
+          <pre>{{profil}}</pre>
           <button v-on:click=update>Mettre à jour</button>
         </div>
         <div v-else>
           <p>Vous allez créer le contact {{name}} dans Salesforce avec les informations suivantes:</p>
-          <pre>{{result}}</pre>
+          <pre>{{profil}}</pre>
           <button v-on:click=create>Créer</button>
         </div>
       </div>
@@ -26,13 +26,13 @@
     data: function () {
       return {
         url: '',
-        result: null,
+        profil: null,
         contact: null
       }
     },
     computed: {
       name: function () {
-        return this.result.firstName + ' ' + this.result.lastName
+        return this.profil.firstName + ' ' + this.profil.lastName
       },
       connected: function () {
         return this.IN && this.SF
@@ -53,14 +53,14 @@
         this.url = ''
       },
       change: function () {
-        this.result = null
+        this.profil = null
         this.contact = null
       },
       select: function () {
         this.IN.API
           .Raw('/people/url=' + encodeURIComponent(this.url) + ':(id,first-name,last-name,positions,interests,publications,patents,languages,skills,date-of-birth,email-address,phone-numbers,im-accounts,main-address,twitter-accounts,headline,picture-url,public-profile-url)')
           .result(function (data) {
-            this.result = data
+            this.profil = data
             this.SF.query("SELECT Id, Name, Email FROM Contact WHERE Name = '" + this.name + "'", function (err, res) {
               if (err)
                 throw err
@@ -71,7 +71,7 @@
       create: function () {
         if (confirm('Etes vous sur ?')) {
           this.SF
-            .sobject("Contact")
+            .sobject('Contact')
             .create({
               Name: this.name
             },
@@ -85,7 +85,7 @@
       update: function () {
         if (confirm('Etes vous sur ?')) {
           this.SF
-            .sobject("Contact")
+            .sobject('Contact')
             .update({
               Id: this.contact.Id,
               Name: this.name

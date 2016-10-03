@@ -1,22 +1,22 @@
 var state = {
   IN: null,
-  meIN: null,
   SF: null,
-  meSF: null
+  me: null,
+  me2: null
 }
 
 var mutations = {
   setIN: function (state, IN) {
     state.IN = IN
   },
-  setMeIN: function (state, me) {
-    state.meIN = me
-  },
   setSF: function (state, SF) {
     state.SF = SF
   },
-  setMeSF: function (state, me) {
-    state.meSF = me
+  setMe: function (state, me) {
+    state.me = me
+  },
+  setMe2: function (state, me) {
+    state.me2 = me
   }
 }
 

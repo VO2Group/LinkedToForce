@@ -12,10 +12,10 @@
   module.exports = {
     computed: {
       name: function () {
-        return this.meSF.firstName + ' ' + this.meSF.lastName
+        return this.me2.firstName + ' ' + this.me2.lastName
       },
       connected: function () {
-        return this.SF && this.meSF
+        return this.SF && this.me2
       }
     },
     vuex: {
@@ -23,8 +23,8 @@
         SF: function (state) {
           return state.SF
         },
-        meSF: function (state) {
-          return state.meSF
+        me2: function (state) {
+          return state.me2
         }
       }
     },

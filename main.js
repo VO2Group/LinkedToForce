@@ -20,7 +20,7 @@ IN.Event.on(IN, 'auth', function () {
   IN.API
     .Raw('/people/~:(id,first-name,last-name,positions,interests,publications,patents,languages,skills,date-of-birth,email-address,phone-numbers,im-accounts,main-address,twitter-accounts,headline,picture-url,public-profile-url)')
     .result(function (data) {
-      st.dispatch('setMeIN', data)
+      st.dispatch('setMe', data)
     })
 })
 
@@ -29,6 +29,6 @@ jsforce.browser.on('connect', function (SF) {
   SF.chatter.resource('/users/me').retrieve(function (err, res) {
     if (err)
       throw err
-    st.dispatch('setMeSF', res)
+    st.dispatch('setMe2', res)
   })
 })

@@ -12,10 +12,10 @@
   module.exports = {
     computed: {
       name: function () {
-        return this.meIN.firstName + ' ' + this.meIN.lastName
+        return this.me.firstName + ' ' + this.me.lastName
       },
       connected: function () {
-        return this.IN && this.meIN
+        return this.IN && this.me
       }
     },
     vuex: {
@@ -23,8 +23,8 @@
         IN: function (state) {
           return state.IN
         },
-        meIN: function (state) {
-          return state.meIN
+        me: function (state) {
+          return state.me
         }
       },
       actions: {
@@ -33,7 +33,7 @@
             IN.API
               .Raw('/people/~:(id,first-name,last-name,positions,interests,publications,patents,languages,skills,date-of-birth,email-address,phone-numbers,im-accounts,main-address,twitter-accounts,headline,picture-url,public-profile-url)')
               .result(function (data) {
-                store.dispatch('setMeIN', data)
+                store.dispatch('setMe', data)
               })
           })
         }
