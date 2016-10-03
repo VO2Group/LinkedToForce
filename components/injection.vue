@@ -1,9 +1,8 @@
 <template>
   <div class=injection>
-    <h2>Profil</h2>
     <div v-if=connected>
-      <input type=text placeholder="Tapez l'URL LinkedIn d'un profile" v-model=url v-on:change=change>
-      <button v-on:click=select v-bind:disabled=!url>Récupérer le profil</button>
+      <input type=text placeholder="Tapez l'URL d'un profil LinkedIn" v-model=url v-on:change=change>
+      <button class=button v-on:click=select v-bind:disabled=!url>Récupérer le profil</button>
       <div v-if=result>
         <h2>{{name}}</h2>
         <h3>{{result.headline}}</h3>
@@ -19,9 +18,6 @@
           <button v-on:click=create>Créer</button>
         </div>
       </div>
-    </div>
-    <div v-else>
-      <span>Vous devez vous connecter pour saisir un profil</span>
     </div>
   </div>
 </template>

@@ -1,14 +1,10 @@
 <template>
   <div class=linkedin>
-    <h2>LinkedIn</h2>
-    <div v-if=connected>
-      <img class=avatar v-bind:src=meIN.pictureUrl>
-      <p><b>{{name}}</b></p>
-      <p>Vous êtes connecté à LinkedIn</p>
+    <div v-if=!connected>
+      <button class=button v-on:click=login>Connectez vous à<br>LinkedIn</button>
     </div>
     <div v-else>
-      <label>Vous devez vous connecter à LinkedIn avant de pouvoir créer des contacts</label>
-      <button v-on:click=login>Connectez vous à LinkedIn</button>
+      <h2>{{name}}</h2>
     </div>
   </div>
 </template>
@@ -37,7 +33,7 @@
             IN.API
               .Raw('/people/~:(id,first-name,last-name,positions,interests,publications,patents,languages,skills,date-of-birth,email-address,phone-numbers,im-accounts,main-address,twitter-accounts,headline,picture-url,public-profile-url)')
               .result(function (data) {
-                store.dispatch('setMe', data)
+                store.dispatch('setMeIN', data)
               })
           })
         }

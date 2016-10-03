@@ -1,14 +1,10 @@
 <template>
   <div class=salesforce>
-    <h2>Salesforce</h2>
-    <div v-if=connected>
-      <img class=avatar v-bind:src=meSF.photo.smallPhotoUrl>
-      <p><b>{{name}}</b></p>
-      <p>Vous êtes connecté à Saleforce</p>
+    <div v-if=!connected>
+      <button class=button v-on:click=login>Connectez vous à<br>Salesforce</button>
     </div>
     <div v-else>
-      <label>Bien évidement vous devez aussi vous connecter à Salesforce</label>
-      <button v-on:click=login>Connectez vous à Salesforce</button>
+      <h2>{{name}}</h2>
     </div>
   </div>
 </template>
